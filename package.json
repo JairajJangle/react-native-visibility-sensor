@@ -1,6 +1,6 @@
 {
   "name": "@se09deluca/react-native-component-inview",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React Native wrapper to check whether a component is in the view port to track impressions and clicks",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -103,7 +103,9 @@
     },
     "npm": {
       "publish": true,
-      "publishArgs": ["--access public"]
+      "publishArgs": [
+        "--access public"
+      ]
     },
     "github": {
       "release": true
