@@ -49,7 +49,7 @@ const checkVisible = (isVisible:boolean) => {
 
 ## Demo
 
-  <a href="https://drive.google.com/uc?export=view&id=1bXfE6KDroe6az1qyhZNLtFoJ_7LRcvVD"><img src="https://drive.google.com/uc?export=view&id=1bXfE6KDroe6az1qyhZNLtFoJ_7LRcvVD" style="width: 250px; max-width: 100%; height: auto" title="The original legends in a demo." alt="demo" ></a>
+  <img src="https://drive.google.com/uc?export=view&id=1bXfE6KDroe6az1qyhZNLtFoJ_7LRcvVD" style="width: 250px; max-width: 100%; height: auto" title="The original legends in a demo." alt="demo"/>
 </td>
  </tr>
 </table>
