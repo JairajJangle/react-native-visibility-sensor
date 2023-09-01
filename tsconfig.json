@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-component-inview": ["./src/index"]
+      "@se09deluca/react-native-component-inview": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

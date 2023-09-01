@@ -8,12 +8,9 @@ import {
   View,
   type ListRenderItem,
 } from 'react-native';
-import { InView } from 'react-native-component-inview';
-import {
-  pocketMonsters,
-  type PocketMonsterInfo,
-} from '../../src/pocketMonsters';
-import { useMemo } from 'react';
+import { InView } from '@se09deluca/react-native-component-inview';
+import { pocketMonsters, type PocketMonsterInfo } from './pocketMonsters';
+import { useMemo, useState } from 'react';
 
 export default function App() {
   const renderItems: ListRenderItem<PocketMonsterInfo> = ({ item }) => (
@@ -42,7 +39,7 @@ const InViewPocketMonster = ({
   name: string;
   spriteUri: string;
 }) => {
-  const [isInView, setIsInView] = React.useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   const opacity = useMemo(() => ({ opacity: isInView ? 1 : 0.4 }), [isInView]);
 

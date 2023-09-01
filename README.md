@@ -1,6 +1,8 @@
-# react-native-component-inview
+# @se09deluca/react-native-component-inview
 
-A React Native wrapper to check whether a component is in the view port to track impressions and clicks
+A React Native wrapper to check whether a component is in the viewport. Useful to track impressions, clicks or implements custom logic.
+
+It works on **Android, iOS & Web** .
 
 <table border="0">
  <tr>
@@ -10,18 +12,18 @@ A React Native wrapper to check whether a component is in the view port to track
 
 #### using npm
 ```sh
-npm install react-native-component-inview
+npm install @se09deluca/react-native-component-inview
 ```
 #### using Yarn
 ```sh
-yarn add react-native-component-inview
+yarn add @se09deluca/react-native-component-inview
 ```
 
 
 ## Usage
 
 ```js
-import InView from 'react-native-component-inview'
+import InView from '@se09deluca/react-native-component-inview'
 
 const [isInView, setIsInView] = useState(false)
 
@@ -49,7 +51,7 @@ const checkVisible = (isVisible:boolean) => {
 
 ## Demo
 
-  <img src="https://drive.google.com/uc?export=view&id=1bXfE6KDroe6az1qyhZNLtFoJ_7LRcvVD" style="width: 250px; max-width: 100%; height: auto" title="The original legends in a demo." alt="demo"/>
+  <img src="https://drive.google.com/uc?export=view&id=1jjU2o1SnUEMvFR9MMqQHOaGtPOVdW7M-" style="width: 250px; max-width: 100%; height: auto" title="The original legends in a demo." alt="demo"/>
 </td>
  </tr>
 </table>
