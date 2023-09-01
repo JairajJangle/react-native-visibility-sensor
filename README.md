@@ -47,7 +47,7 @@ const checkVisible = (isVisible:boolean) => {
 ```
 </td>
 
-<td style="width: 50%; border-color: transparent; text-align: center;">
+<td style="width: 50%; min-width: 200px; border-color: transparent; text-align: center;">
 
 ## Demo
 
