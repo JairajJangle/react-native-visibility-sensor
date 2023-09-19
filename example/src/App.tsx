@@ -49,10 +49,10 @@ const InViewPocketMonster = ({
     } else {
       setIsInView(isVisible);
     }
+    console.log(`${name} ${isVisible ? 'is now' : "isn't"} visible`);
   };
   return (
     <InView onChange={checkVisible}>
-      {}
       <View style={opacity}>
         <Image
           source={{ uri: spriteUri }}

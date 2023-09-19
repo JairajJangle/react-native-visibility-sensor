@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { type ReactNode, useEffect, useRef, useState } from 'react';
 import { Dimensions, type ScaledSize, View } from 'react-native';
 
 export interface InViewProps {
@@ -6,51 +6,52 @@ export interface InViewProps {
   disabled?: boolean;
   triggerOnce?: boolean;
   delay?: number | undefined;
+  children?: ReactNode;
 }
 
-type InViewState = {
+type RectDimensionsState = {
   rectTop: number;
   rectBottom: number;
   rectWidth: number;
 };
 
-export class InView extends Component<InViewProps, InViewState> {
-  private lastValue: boolean | null | undefined;
-  private interval: NodeJS.Timeout | undefined;
-  private myView: any;
-  constructor(props: InViewProps) {
-    super(props);
-    this.state = { rectTop: 0, rectBottom: 0, rectWidth: 0 };
-  }
+export const InView = ({
+  onChange,
+  disabled = false,
+  triggerOnce = false,
+  delay,
+  children,
+  ...props
+}: InViewProps) => {
+  const innerViewRef: any = useRef(undefined);
+  const [rectDimensions, setRectDimensions] = useState<RectDimensionsState>({
+    rectTop: 0,
+    rectBottom: 0,
+    rectWidth: 0,
+  });
+  const [lastValue, setLastValue] = useState<boolean | undefined>(undefined);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>(
+    undefined
+  );
 
-  componentDidMount() {
-    if (!this.props.disabled) {
-      this.startWatching();
+  useEffect(() => {
+    if (!disabled) {
+      startWatching();
     }
-  }
 
-  componentWillUnmount() {
-    this.stopWatching();
-  }
+    return () => {
+      stopWatching();
+    };
+  }, [disabled]);
 
-  componentDidUpdate(nextProps: InViewProps) {
-    if (nextProps.disabled) {
-      this.stopWatching();
-    } else {
-      this.lastValue = null;
-      this.startWatching();
-    }
-  }
+  const startWatching = () => {
+    if (intervalId) return;
 
-  startWatching() {
-    if (this.interval) {
-      return;
-    }
-    this.interval = setInterval(() => {
-      if (!this.myView) {
+    const timerId: NodeJS.Timeout = setInterval(() => {
+      if (!innerViewRef.current) {
         return;
       }
-      this.myView.measure(
+      innerViewRef.current?.measure(
         (
           _x: number,
           _y: number,
@@ -59,51 +60,44 @@ export class InView extends Component<InViewProps, InViewState> {
           pageX: number,
           pageY: number
         ) => {
-          this.setState({
+          setRectDimensions({
             rectTop: pageY,
             rectBottom: pageY + height,
             rectWidth: pageX + width,
           });
         }
       );
-      this.isInViewPort();
-    }, this.props.delay || 100);
-  }
+    }, delay || 100);
 
-  stopWatching() {
-    clearInterval(this.interval);
-    this.interval = undefined;
-  }
+    setIntervalId(timerId);
+  };
+  const stopWatching = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(undefined);
+    }
+  };
 
-  isInViewPort() {
+  useEffect(() => {
     const window: ScaledSize = Dimensions.get('window');
     const isVisible: boolean =
-      this.state.rectBottom !== 0 &&
-      this.state.rectTop >= 0 &&
-      this.state.rectBottom <= window.height &&
-      this.state.rectWidth > 0 &&
-      this.state.rectWidth <= window.width;
-    if (this.lastValue !== isVisible) {
-      this.lastValue = isVisible;
-      this.props.onChange(isVisible);
-      if (isVisible) {
-        if (this.props.triggerOnce) {
-          this.stopWatching();
-        }
+      rectDimensions.rectBottom !== 0 &&
+      rectDimensions.rectTop >= 0 &&
+      rectDimensions.rectBottom <= window.height &&
+      rectDimensions.rectWidth > 0 &&
+      rectDimensions.rectWidth <= window.width;
+    if (lastValue !== isVisible) {
+      setLastValue(isVisible);
+      onChange(isVisible);
+      if (isVisible && triggerOnce) {
+        stopWatching();
       }
     }
-  }
+  }, [rectDimensions, lastValue]);
 
-  render() {
-    return (
-      <View
-        ref={(component) => {
-          this.myView = component;
-        }}
-        {...this.props}
-      >
-        {this.props.children}
-      </View>
-    );
-  }
-}
+  return (
+    <View ref={innerViewRef} {...props}>
+      {children}
+    </View>
+  );
+};
