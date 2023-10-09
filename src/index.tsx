@@ -1,4 +1,10 @@
-import React, { type ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Dimensions, type ScaledSize, View } from 'react-native';
 
 export interface InViewProps {
@@ -15,6 +21,28 @@ type RectDimensionsState = {
   rectWidth: number;
 };
 
+function useInterval(callback: () => void, delay: number | null) {
+  const savedCallback = useRef(callback);
+
+  // Remember the latest callback if it changes.
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  // Set up the interval.
+  useEffect(() => {
+    // Don't schedule if no delay is specified.
+    // Note: 0 is a valid value for delay.
+    if (!delay && delay !== 0) {
+      return;
+    }
+
+    const id = setInterval(() => savedCallback.current(), delay);
+
+    return () => clearInterval(id);
+  }, [delay]);
+}
+
 export const InView = ({
   onChange,
   disabled = false,
@@ -30,9 +58,52 @@ export const InView = ({
     rectWidth: 0,
   });
   const [lastValue, setLastValue] = useState<boolean | undefined>(undefined);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>(
-    undefined
-  );
+  const [active, setActive] = useState<boolean>(false);
+
+  const measureInnerView = () => {
+    if (!active) {
+      return;
+    }
+    if (!innerViewRef.current) {
+      return;
+    }
+    innerViewRef.current?.measure(
+      (
+        _x: number,
+        _y: number,
+        width: number,
+        height: number,
+        pageX: number,
+        pageY: number
+      ) => {
+        const dimensions = {
+          rectTop: pageY,
+          rectBottom: pageY + height,
+          rectWidth: pageX + width,
+        };
+        if (
+          rectDimensions.rectTop !== dimensions.rectTop ||
+          rectDimensions.rectBottom !== dimensions.rectBottom ||
+          rectDimensions.rectWidth !== dimensions.rectWidth
+        ) {
+          setRectDimensions(dimensions);
+        }
+      }
+    );
+  };
+
+  useInterval(measureInnerView, delay || 100);
+
+  const startWatching = useCallback(() => {
+    if (active) return;
+    setActive(true);
+  }, [active]);
+
+  const stopWatching = useCallback(() => {
+    if (active) {
+      setActive(false);
+    }
+  }, [active]);
 
   useEffect(() => {
     if (!disabled) {
@@ -42,41 +113,7 @@ export const InView = ({
     return () => {
       stopWatching();
     };
-  }, [disabled]);
-
-  const startWatching = () => {
-    if (intervalId) return;
-
-    const timerId: NodeJS.Timeout = setInterval(() => {
-      if (!innerViewRef.current) {
-        return;
-      }
-      innerViewRef.current?.measure(
-        (
-          _x: number,
-          _y: number,
-          width: number,
-          height: number,
-          pageX: number,
-          pageY: number
-        ) => {
-          setRectDimensions({
-            rectTop: pageY,
-            rectBottom: pageY + height,
-            rectWidth: pageX + width,
-          });
-        }
-      );
-    }, delay || 100);
-
-    setIntervalId(timerId);
-  };
-  const stopWatching = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(undefined);
-    }
-  };
+  }, [disabled, startWatching, stopWatching]);
 
   useEffect(() => {
     const window: ScaledSize = Dimensions.get('window');
@@ -93,6 +130,7 @@ export const InView = ({
         stopWatching();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rectDimensions, lastValue]);
 
   return (
