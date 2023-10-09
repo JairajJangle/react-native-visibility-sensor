@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { InView } from '@se09deluca/react-native-component-inview';
 import { pocketMonsters, type PocketMonsterInfo } from './pocketMonsters';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export default function App() {
   const renderItems: ListRenderItem<PocketMonsterInfo> = ({ item }) => (
@@ -39,18 +39,25 @@ const InViewPocketMonster = ({
   name: string;
   spriteUri: string;
 }) => {
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState<boolean>(false);
 
   const opacity = useMemo(() => ({ opacity: isInView ? 1 : 0.4 }), [isInView]);
 
-  const checkVisible = (isVisible: boolean) => {
-    if (isVisible) {
-      setIsInView(isVisible);
-    } else {
-      setIsInView(isVisible);
-    }
-    console.log(`${name} ${isVisible ? 'is now' : "isn't"} visible`);
-  };
+  const checkVisible = useCallback(
+    (isVisible: boolean) => {
+      if (isVisible) {
+        setIsInView(isVisible);
+      } else {
+        setIsInView(isVisible);
+      }
+      console.log(
+        `${name} ${isVisible ? 'is now' : "isn't"} visible ${
+          isInView && !isVisible ? 'anymore' : ''
+        }`
+      );
+    },
+    [name, isInView]
+  );
   return (
     <InView onChange={checkVisible}>
       <View style={opacity}>
