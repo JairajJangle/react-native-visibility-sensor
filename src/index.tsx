@@ -15,11 +15,11 @@ export interface InViewProps {
   children?: ReactNode;
 }
 
-type RectDimensionsState = {
+interface RectDimensionsState {
   rectTop: number;
   rectBottom: number;
   rectWidth: number;
-};
+}
 
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
@@ -43,15 +43,17 @@ function useInterval(callback: () => void, delay: number | null) {
   }, [delay]);
 }
 
-export const InView = ({
-  onChange,
-  disabled = false,
-  triggerOnce = false,
-  delay,
-  children,
-  ...props
-}: InViewProps) => {
-  const innerViewRef: any = useRef(undefined);
+export function InView(inViewProps: InViewProps) {
+  const {
+    onChange,
+    disabled = false,
+    triggerOnce = false,
+    delay,
+    children,
+    ...props
+  } = inViewProps;
+
+  const innerViewRef = useRef<View>(null);
   const [rectDimensions, setRectDimensions] = useState<RectDimensionsState>({
     rectTop: 0,
     rectBottom: 0,
@@ -138,4 +140,4 @@ export const InView = ({
       {children}
     </View>
   );
-};
+}
