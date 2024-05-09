@@ -1,5 +1,5 @@
 {
-  "name": "@se09deluca/react-native-component-inview",
+  "name": "react-native-visibility-sensor",
   "version": "0.1.4",
   "description": "A React Native wrapper to check whether a component is in the view port to track impressions and clicks",
   "main": "lib/commonjs/index",
@@ -39,7 +39,13 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "visibility-sensor",
+    "visibility",
+    "sensor",
+    "visibilitysensor",
+    "in-view",
+    "inview"
   ],
   "repository": "https://github.com/se09deluca/react-native-component-inview",
   "author": "https://github.com/se09deluca",

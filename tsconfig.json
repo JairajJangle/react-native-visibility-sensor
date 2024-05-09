@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@se09deluca/react-native-component-inview": ["./src/index"]
+      "react-native-visibility-sensor": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
