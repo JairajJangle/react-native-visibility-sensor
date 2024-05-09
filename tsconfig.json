@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-visibility-sensor": ["./src/index"]
+      "@futurejj/react-native-visibility-sensor": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

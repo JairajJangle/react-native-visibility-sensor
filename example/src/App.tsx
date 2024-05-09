@@ -8,7 +8,7 @@ import {
   View,
   type ListRenderItem,
 } from 'react-native';
-import { VisibilitySensor } from 'react-native-visibility-sensor';
+import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 import { pocketMonsters, type PocketMonsterInfo } from './pocketMonsters';
 import { useCallback, useMemo, useState } from 'react';
 

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-visibility-sensor",
+  "name": "@futurejj/react-native-visibility-sensor",
   "version": "0.1.4",
   "description": "A React Native wrapper to check whether a component is in the view port to track impressions and clicks",
   "main": "lib/commonjs/index",
