@@ -2,21 +2,21 @@
 
 🔍 Component visibility sensor wrapper to sense whether or not a component is in viewport. 
 
-It works on **Android, iOS & Web** .
+[![npm version](https://img.shields.io/npm/v/%40futurejj%2Freact-native-visibility-sensor)](https://badge.fury.io/js/%40futurejj%2Freact-native-visibility-sensor) [![License](https://img.shields.io/github/license/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/blob/main/LICENSE) [![Supported Platform Badge](https://img.shields.io/badge/platform-android%20%26%20ios-blue)](https://github.com/JairajJangle/react-native-visibility-sensor/tree/main/example) [![GitHub issues](https://img.shields.io/github/issues/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/issues?q=is%3Aopen+is%3Aissue) ![TS](https://img.shields.io/badge/TypeScript-strict_💪-blue)
 
-<table border="0">
- <tr>
-    <td style="width: 50%; border-color: transparent;">
 
 ## Installation
 
-#### using npm
-```sh
-npm install @futurejj/react-native-visibility-sensor
-```
-#### using Yarn
+Using yarn 
+
 ```sh
 yarn add @futurejj/react-native-visibility-sensor
+```
+
+using npm:
+
+```sh
+npm install @futurejj/react-native-visibility-sensor
 ```
 
 
