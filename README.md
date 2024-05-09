@@ -1,6 +1,6 @@
-# @se09deluca/react-native-component-inview
+# react-native-visibility-sensor
 
-A React Native wrapper to check whether a component is in the viewport. Useful to track impressions, clicks or implements custom logic.
+🔍 Component visibility sensor wrapper to sense whether or not a component is in viewport. 
 
 It works on **Android, iOS & Web** .
 
@@ -12,22 +12,22 @@ It works on **Android, iOS & Web** .
 
 #### using npm
 ```sh
-npm install @se09deluca/react-native-component-inview
+npm install react-native-visibility-sensor
 ```
 #### using Yarn
 ```sh
-yarn add @se09deluca/react-native-component-inview
+yarn add react-native-visibility-sensor
 ```
 
 
 ## Usage
 
-```js
-import InView from '@se09deluca/react-native-component-inview'
+```typescript
+import { VisibilitySensor } from 'react-native-visibility-sensor';
 
 const [isInView, setIsInView] = useState(false)
 
-const checkVisible = (isVisible:boolean) => {
+const checkVisible = (isVisible: boolean) => {
   if (isVisible){
     setIsInView(isVisible)
   } else {
@@ -36,11 +36,11 @@ const checkVisible = (isVisible:boolean) => {
 }
 
 <ScrollView>
-  <InView onChange={(isVisible) => this.checkVisible(isVisible)}>
+  <VisibilitySensor onChange={(isVisible) => this.checkVisible(isVisible)}>
     <View style={[styles.item, {backgroundColor: isInView ? 'yellow' : '#f9c2ff'}]}>
       <Text>This View is currently visible? {isInView ? 'yes': 'no'}</Text>
     </View>
-  </InView>
+  </VisibilitySensor>
 </ScrollView>
 
 // ...
