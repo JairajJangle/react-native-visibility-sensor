@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 import { pocketMonsters, type PocketMonsterInfo } from './pocketMonsters';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function App() {
   const renderItems: ListRenderItem<PocketMonsterInfo> = ({ item }) => (
@@ -22,7 +22,6 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        horizontal
         data={pocketMonsters}
         keyExtractor={(_item, index) => index.toString()}
         renderItem={renderItems}
@@ -43,8 +42,6 @@ const InViewPocketMonster = ({
 }) => {
   const [isInView, setIsInView] = useState<boolean>(false);
 
-  const opacity = useMemo(() => ({ opacity: isInView ? 1 : 0.4 }), [isInView]);
-
   const checkVisible = useCallback(
     (isVisible: boolean) => {
       setIsInView(isVisible);
@@ -60,19 +57,24 @@ const InViewPocketMonster = ({
   return (
     <VisibilitySensor
       threshold={{
-        left: 100,
-        right: 100,
+        top: 300,
+        bottom: 300,
       }}
       onChange={checkVisible}
+      style={[
+        styles.visibilitySensor,
+        isInView ? styles.inView : styles.notInView,
+      ]}
     >
-      <View style={opacity}>
-        <Image
-          source={{ uri: spriteUri }}
-          style={styles.pocketMonster}
-          resizeMode={'contain'}
-        />
-        <Text style={styles.pocketMonsterName}>{name}</Text>
-      </View>
+      <Image
+        source={{ uri: spriteUri }}
+        style={[
+          styles.pocketMonster,
+          isInView ? styles.pocketMonsterInView : styles.pocketMonsterNotInView,
+        ]}
+        resizeMode={'contain'}
+      />
+      <Text style={styles.pocketMonsterName}>{name}</Text>
     </VisibilitySensor>
   );
 };
@@ -83,14 +85,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   spacer: { marginHorizontal: 35 },
-  pocketMonster: { width: 200, height: 200 },
+  pocketMonster: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+  },
+  pocketMonsterInView: {
+    opacity: 1,
+  },
+  pocketMonsterNotInView: {
+    opacity: 0.4,
+  },
   pocketMonsterName: {
     textAlign: 'center',
     fontWeight: 'bold',
     marginTop: 16,
-    fontSize: 20,
+    fontSize: 26,
   },
   listHeaderFooter: {
-    padding: 45,
+    padding: 20,
+  },
+  visibilitySensor: {
+    marginBottom: 20,
+    width: 300,
+    height: 300,
+    borderRadius: 20,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inView: {
+    backgroundColor: 'yellow',
+  },
+  notInView: {
+    backgroundColor: 'pink',
+    opacity: 0.8,
   },
 });

@@ -5,57 +5,51 @@ export type PocketMonsterInfo = {
 
 export const pocketMonsters: PocketMonsterInfo[] = [
   {
-    name: 'Moltres',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/moltres-color.png',
+    name: 'Pikachu',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/pikachu-alt1.png',
   },
   {
-    name: 'Articuno',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/articuno-color.png',
+    name: 'Bulbasaur',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/bulbasaur.png',
   },
   {
-    name: 'Zapdos',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/zapdos-color.png',
+    name: 'Charmander',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/charmander.png',
   },
   {
-    name: 'Arcanine',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/arcanine-color.png',
+    name: 'Charizard',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/charizard.png',
+  },
+  {
+    name: 'Squirtle',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/squirtle.png',
+  },
+  {
+    name: 'Caterpie',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/caterpie.png',
+  },
+  {
+    name: 'Pidgey',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/pidgey.png',
   },
   {
     name: 'Mewtwo',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/mewtwo-color.png',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/mewtwo.png',
   },
   {
-    name: 'Mew',
-    spriteUri:
-      'https://img.pokemondb.net/sprites/red-blue/normal/mew-color.png',
+    name: 'Ekans',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/ekans.png',
   },
   {
-    name: 'Raikou',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/raikou.png',
+    name: 'Raichu',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/raichu.png',
   },
   {
-    name: 'Entei',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/entei.png',
+    name: 'Dugtrio',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/dugtrio.png',
   },
   {
-    name: 'Suicune',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/suicune.png',
-  },
-  {
-    name: 'Lugia',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/lugia.png',
-  },
-  {
-    name: 'Ho-Oh',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/ho-oh.png',
-  },
-  {
-    name: 'Celebi',
-    spriteUri: 'https://img.pokemondb.net/sprites/crystal/normal/celebi.png',
+    name: 'Machamp',
+    spriteUri: 'https://img.pokemondb.net/artwork/vector/machamp.png',
   },
 ];
