@@ -68,7 +68,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.3",
-    "@semantic-release/npm": "^12.0.0",
+    "@semantic-release/npm": "^12.0.1",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
@@ -84,7 +84,7 @@
     "react-native": "0.72.4",
     "react-native-builder-bob": "^0.20.0",
     "release-it": "^15.0.0",
-    "semantic-release": "^23.0.8",
+    "semantic-release": "^23.1.1",
     "typescript": "^5.0.2"
   },
   "resolutions": {
