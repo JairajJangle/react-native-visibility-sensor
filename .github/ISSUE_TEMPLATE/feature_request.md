@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a feature or improvement for 'react-native-tree-multi-select'
+about: Suggest a feature or improvement for '@futurejj/react-native-visibility-sensor'
 title: "[FEAT-REQ]"
 labels: enhancement
 assignees: JairajJangle
