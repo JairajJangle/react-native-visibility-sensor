@@ -47,7 +47,10 @@
     "in-view",
     "inview"
   ],
-  "repository": "https://github.com/JairajJangle/react-native-visibility-sensor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JairajJangle/react-native-visibility-sensor.git"
+  },
   "author": "https://github.com/se09deluca",
   "license": "MIT",
   "bugs": {
