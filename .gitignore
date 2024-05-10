@@ -44,6 +44,9 @@ android.iml
 #
 example/ios/Pods
 
+# Web build
+example/web-build/
+
 # Ruby
 example/vendor/
 
