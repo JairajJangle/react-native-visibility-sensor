@@ -59,3 +59,39 @@ jobs:
       - name: Build example for Web
         run: |
           yarn example expo export:web
+
+  publish-npm:
+    needs: [lint, test, build-library, build-web]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To publish a GitHub release
+      issues: write # To comment on released issues
+      pull-requests: write # To comment on released pull requests
+      id-token: write # To enable use of OIDC for npm provenance
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all tags are fetched
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"  # Use the latest LTS version of Node.js
+          registry-url: 'https://registry.npmjs.org/'  # Specify npm registry
+
+      - name: Install dependencies
+        run: npm ci  # Clean install dependencies based on the lock file
+
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures  # Check the signatures to verify integrity
+
+      - name: Release
+        run: npx semantic-release  # Run semantic-release to manage versioning and publishing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+
+          # Why NODE_AUTH_TOKEN instead of NPM_TOKEN: https://github.com/semantic-release/semantic-release/issues/2313
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  # npm token for publishing package
+        
