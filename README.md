@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/%40futurejj%2Freact-native-visibility-sensor)](https://badge.fury.io/js/%40futurejj%2Freact-native-visibility-sensor) [![License](https://img.shields.io/github/license/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/blob/main/LICENSE) [![Workflow Status](https://github.com/JairajJangle/react-native-visibility-sensor/actions/workflows/ci.yml/badge.svg)](https://github.com/JairajJangle/react-native-visibility-sensor/actions/workflows/ci.yml) [![Supported Platform Badge](https://img.shields.io/badge/platform-android%20%26%20ios-blue)](https://github.com/JairajJangle/react-native-visibility-sensor/tree/main/example) [![GitHub issues](https://img.shields.io/github/issues/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/issues?q=is%3Aopen+is%3Aissue) ![TS](https://img.shields.io/badge/TypeScript-strict_💪-blue)
 
-<div style="display: flex; justify-content: space-around;">
+<div align="center">
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTlsaGEyaXd4ZDdicWdtYnM4d3FibWltZjJwd3RrOG80b2pzemQ4dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hNCfKTz7YMuDPIM7eV/giphy.gif" alt="Visibility Sensor demo" style="border: 1px solid gray;" />
 </div>
 
