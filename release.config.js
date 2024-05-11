@@ -5,12 +5,7 @@ module.exports = {
     '@semantic-release/release-notes-generator', // Generates release notes
     '@semantic-release/changelog', // Generates the changelog
     '@semantic-release/git', // Commits changed files including the changelog
-    [
-      '@semantic-release/github', // Manages the GitHub release and uploads assets
-      {
-        assets: [{ path: 'CHANGELOG.md', label: 'Changelog' }],
-      },
-    ],
+    '@semantic-release/github',
     '@semantic-release/npm', // Handles npm publishing
   ],
 };
