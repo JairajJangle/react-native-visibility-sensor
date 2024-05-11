@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.6...v1.2.7) (2024-05-11)
+
+
+### Bug Fixes
+
+* **semantic_release:** release config fix for assets ([78fa8ae](https://github.com/JairajJangle/react-native-visibility-sensor/commit/78fa8ae3daf5b0b4bd72df0f553b4914b16b8a67))
+
 ## [1.2.6](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.5...v1.2.6) (2024-05-11)
 
 
