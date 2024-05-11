@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.7...v1.2.8) (2024-05-11)
+
+
+### Bug Fixes
+
+* **semantic_release:** removed duplicate release config from package json ([397f18c](https://github.com/JairajJangle/react-native-visibility-sensor/commit/397f18ccd699b1da74978570a93e649220e0c16c))
+
 ## [1.2.7](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.6...v1.2.7) (2024-05-11)
 
 
