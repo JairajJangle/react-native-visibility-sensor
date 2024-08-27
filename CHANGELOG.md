@@ -1,3 +1,11 @@
+## [1.2.9](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.8...v1.2.9) (2024-05-11)
+
+
+### Bug Fixes
+
+* **semantic_release:** updated gh actions to v4 ([33142d2](https://github.com/JairajJangle/react-native-visibility-sensor/commit/33142d2f26e5c778a3445b0eeffc7b458b6320ce))
+* **semantic_release:** updated lock files ([ca77dfc](https://github.com/JairajJangle/react-native-visibility-sensor/commit/ca77dfceaf65b8475e28a0dd13247b4df4de0b90))
+
 ## [1.2.8](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.7...v1.2.8) (2024-05-11)
 
 
