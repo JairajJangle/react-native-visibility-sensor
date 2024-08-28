@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.9...v1.3.0) (2024-08-27)
+
+
+### Features
+
+* trigger release ([d1436e4](https://github.com/JairajJangle/react-native-visibility-sensor/commit/d1436e41ef9c168d5f28cfda6db2875ae810170b))
+
 ## [1.2.9](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.2.8...v1.2.9) (2024-05-11)
 
 
