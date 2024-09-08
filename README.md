@@ -84,6 +84,10 @@ Additionally, all properties from `ViewProps` are also applicable.
 
 ---
 
+## Notes 
+
+1. Facing problem on Android? Refer this discussion: https://github.com/JairajJangle/react-native-visibility-sensor/pull/1#issuecomment-2251569005
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
