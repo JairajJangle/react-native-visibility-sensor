@@ -57,8 +57,8 @@ const InViewPocketMonster = ({
   return (
     <VisibilitySensor
       threshold={{
-        top: 300,
-        bottom: 300,
+        top: 200,
+        bottom: 200,
       }}
       onChange={checkVisible}
       style={[
