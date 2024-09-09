@@ -1,3 +1,11 @@
+## [1.3.3](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.2...v1.3.3) (2024-09-09)
+
+
+### Bug Fixes
+
+* upgrade react-dom from 18.2.0 to 18.3.1 ([8f8f34e](https://github.com/JairajJangle/react-native-visibility-sensor/commit/8f8f34ea6002d3010a5905725002ce49cf2aab11))
+* upgrade react-native from 0.74.5 to 0.75.1 ([1413631](https://github.com/JairajJangle/react-native-visibility-sensor/commit/14136314728b7f06c97bb6a4de1b4c3e00c7250e))
+
 ## [1.3.2](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.1...v1.3.2) (2024-09-08)
 
 
