@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.4...v1.3.5) (2024-10-22)
+
+
+### Bug Fixes
+
+* upgrade expo from 51.0.34 to 51.0.35 ([5b23e0b](https://github.com/JairajJangle/react-native-visibility-sensor/commit/5b23e0b1f093edaae7c0091b08613496a8d7d6ad))
+
 ## [1.3.4](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.3...v1.3.4) (2024-09-26)
 
 
