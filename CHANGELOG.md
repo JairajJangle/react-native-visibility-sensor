@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.5...v1.3.6) (2024-11-17)
+
+
+### Bug Fixes
+
+* example/package.json & example/yarn.lock to reduce vulnerabilities ([23d75f6](https://github.com/JairajJangle/react-native-visibility-sensor/commit/23d75f6c314a6cc858b67ab14af8308bc41ef638))
+
 ## [1.3.5](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.4...v1.3.5) (2024-10-22)
 
 
