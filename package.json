@@ -82,7 +82,7 @@
     "pod-install": "^0.2.2",
     "prettier": "^3.3.3",
     "react": "18.3.1",
-    "react-native": "0.75.2",
+    "react-native": "0.77.1",
     "react-native-builder-bob": "^0.30.0",
     "release-it": "^17.6.0",
     "semantic-release": "^24.1.0",
