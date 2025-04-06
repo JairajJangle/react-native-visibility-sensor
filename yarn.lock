@@ -10,18 +10,6 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@ark/schema@0.45.7":
-  version "0.45.7"
-  resolved "https://registry.yarnpkg.com/@ark/schema/-/schema-0.45.7.tgz#9f3abbde4b906098c4ddb64720c2b17dc4f762bd"
-  integrity sha512-TS8jHOkAwRLviu84a7PQGebQ8PzGfxeAznJX3AzaXbb9bOYrtCiqo52/BWBwptc7pZJxL0ejN4Yufgb9YsNALw==
-  dependencies:
-    "@ark/util" "0.45.7"
-
-"@ark/util@0.45.7":
-  version "0.45.7"
-  resolved "https://registry.yarnpkg.com/@ark/util/-/util-0.45.7.tgz#0cc907292dc5f1bbb2b06641e268c31530f112d5"
-  integrity sha512-ymzzU8C8W+tQzkOIcaLWx4lLXSe5AnF3lpmAtc2FqkxLEVwRnyeKCYPOVXuttLjMwv8R4S/0D0E2cwmUUzim2Q==
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.21.4", "@babel/code-frame@^7.24.7", "@babel/code-frame@^7.26.2":
   version "7.26.2"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.26.2.tgz#4b5fab97d33338eff916235055f0ebc21e573a85"
@@ -2986,14 +2974,6 @@ argv-formatter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/argv-formatter/-/argv-formatter-1.0.0.tgz#a0ca0cbc29a5b73e836eebe1cbf6c5e0e4eb82f9"
   integrity sha512-F2+Hkm9xFaRg+GkaNnbwXNDV5O6pnCFEmqyhvfC/Ic5LbgOWjJh3L+mN/s91rxVL3znE7DYVpW0GJFT+4YBgWw==
-
-arktype@^2.1.15:
-  version "2.1.17"
-  resolved "https://registry.yarnpkg.com/arktype/-/arktype-2.1.17.tgz#2d249ab0163e6b9538f08d157e176a65bbbeffb4"
-  integrity sha512-w1uDYt+5riOWhjLV7mho7UgofiXLyVWXpHC/Y6xkqVTi9ickuF8aNmEOne7fPN5eTT4Ub4HBfDD7JKJMSa4Htw==
-  dependencies:
-    "@ark/schema" "0.45.7"
-    "@ark/util" "0.45.7"
 
 array-buffer-byte-length@^1.0.1, array-buffer-byte-length@^1.0.2:
   version "1.0.2"
@@ -9096,10 +9076,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
-react-native-builder-bob@^0.40.0:
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/react-native-builder-bob/-/react-native-builder-bob-0.40.0.tgz#9b0d3bed68ec7f8d0c1d8c0613209bf62cf354d8"
-  integrity sha512-HHvEW0wHpUUZxIYIu4ZpoEJZCHyTgNsf3rJkNmxoZismncW+MXGNprOqau+BewI0FGMHk6C1Y+EYfLOz29u+gw==
+react-native-builder-bob@^0.30.0:
+  version "0.30.3"
+  resolved "https://registry.yarnpkg.com/react-native-builder-bob/-/react-native-builder-bob-0.30.3.tgz#3babeb72a56afee70e23a81dacb9c607bfe3c649"
+  integrity sha512-7w+oNNNkY+cR7Z3GgKaDWg7CeSxpv1ZUox42Ji/rViAxygMmtSPBe5I3K723OjGJXhvJCyUK5RRvzefNPw7Amg==
   dependencies:
     "@babel/core" "^7.25.2"
     "@babel/plugin-transform-strict-mode" "^7.24.7"
@@ -9107,9 +9087,9 @@ react-native-builder-bob@^0.40.0:
     "@babel/preset-flow" "^7.24.7"
     "@babel/preset-react" "^7.24.7"
     "@babel/preset-typescript" "^7.24.7"
-    arktype "^2.1.15"
     babel-plugin-module-resolver "^5.0.2"
     browserslist "^4.20.4"
+    cosmiconfig "^9.0.0"
     cross-spawn "^7.0.3"
     dedent "^0.7.0"
     del "^6.1.1"
