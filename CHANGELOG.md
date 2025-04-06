@@ -1,3 +1,52 @@
+## [1.3.12](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.11...v1.3.12) (2025-03-11)
+
+
+### Bug Fixes
+
+* upgrade expo from 52.0.32 to 52.0.35 ([3b93316](https://github.com/JairajJangle/react-native-visibility-sensor/commit/3b9331669b35a599db653f71e173b95cbcff1cd8))
+
+## [1.3.11](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.10...v1.3.11) (2025-02-11)
+
+
+### Bug Fixes
+
+* upgrade expo from 52.0.25 to 52.0.27 ([fef8acd](https://github.com/JairajJangle/react-native-visibility-sensor/commit/fef8acdde9263075995dfd85c5e3d2cee4017261))
+
+## [1.3.10](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.9...v1.3.10) (2025-02-04)
+
+
+### Bug Fixes
+
+* upgrade react-native from 0.76.0 to 0.76.6 ([e239ae3](https://github.com/JairajJangle/react-native-visibility-sensor/commit/e239ae3051ddd66413bc447c5282b9b55511e2bb))
+
+## [1.3.9](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.8...v1.3.9) (2025-01-18)
+
+
+### Bug Fixes
+
+* upgrade expo from 52.0.18 to 52.0.21 ([e47a69f](https://github.com/JairajJangle/react-native-visibility-sensor/commit/e47a69f418c1bf56517db93fa9633ad1dad75967))
+
+## [1.3.8](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.7...v1.3.8) (2024-12-16)
+
+
+### Bug Fixes
+
+* upgrade expo from 52.0.7 to 52.0.11 ([8336047](https://github.com/JairajJangle/react-native-visibility-sensor/commit/83360473af762e2f60f2129302b5ada274d2f894))
+
+## [1.3.7](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.6...v1.3.7) (2024-11-17)
+
+
+### Bug Fixes
+
+* example/package.json & example/yarn.lock to reduce vulnerabilities ([e596d6d](https://github.com/JairajJangle/react-native-visibility-sensor/commit/e596d6dd4574f49a84dc39f70cc07dd142cea7e4))
+
+## [1.3.6](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.5...v1.3.6) (2024-11-17)
+
+
+### Bug Fixes
+
+* example/package.json & example/yarn.lock to reduce vulnerabilities ([23d75f6](https://github.com/JairajJangle/react-native-visibility-sensor/commit/23d75f6c314a6cc858b67ab14af8308bc41ef638))
+
 ## [1.3.5](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.4...v1.3.5) (2024-10-22)
 
 
