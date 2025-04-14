@@ -1,3 +1,10 @@
+## [1.3.14](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.13...v1.3.14) (2025-04-14)
+
+
+### Bug Fixes
+
+* updated lock file deps ([3ee154b](https://github.com/JairajJangle/react-native-visibility-sensor/commit/3ee154b8fb0a853433db707a8de39ac65509be5c))
+
 ## [1.3.13](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.12...v1.3.13) (2025-04-06)
 
 
