@@ -114,6 +114,8 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     }, [disabled, startWatching, stopWatching]);
 
     useEffect(() => {
+      if (!active) return;
+
       const window: ScaledSize = Dimensions.get('window');
       const isVisible: boolean =
         rectDimensions.rectTop + (threshold.top || 0) <= window.height && // Top edge is within the bottom of the window
