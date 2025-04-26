@@ -1,3 +1,10 @@
+## [1.3.15](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.14...v1.3.15) (2025-04-26)
+
+
+### Bug Fixes
+
+* incorrect visibility state on initial render - fixes [#30](https://github.com/JairajJangle/react-native-visibility-sensor/issues/30) ([d60a411](https://github.com/JairajJangle/react-native-visibility-sensor/commit/d60a41188a44d48ce038b205252ba5880d30e509)), closes [#33](https://github.com/JairajJangle/react-native-visibility-sensor/issues/33)
+
 ## [1.3.14](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.13...v1.3.14) (2025-04-14)
 
 
