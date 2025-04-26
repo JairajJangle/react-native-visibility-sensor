@@ -58,8 +58,11 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     });
     const [lastValue, setLastValue] = useState<boolean | undefined>(undefined);
     const [active, setActive] = useState<boolean>(false);
+    const hasMeasuredRef = useRef(false);
 
     const measureInnerView = () => {
+      /* Check if the sensor is active to prevent unnecessary measurements
+      This avoids running measurements when the sensor is disabled or stopped */
       if (!active) return;
 
       localRef.current?.measure(
@@ -88,6 +91,9 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
             rectDimensions.rectHeight !== dimensions.rectHeight
           ) {
             setRectDimensions(dimensions);
+            /* Set hasMeasuredRef to true to indicate that a valid measurement has been taken
+            This ensures visibility checks only proceed after initial measurement */
+            hasMeasuredRef.current = true;
           }
         }
       );
@@ -100,7 +106,12 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     }, [active]);
 
     const stopWatching = useCallback(() => {
-      if (active) setActive(false);
+      if (active) {
+        setActive(false);
+        /* Reset measurement state when stopping to ensure fresh measurements
+        when the sensor is reactivated */
+        hasMeasuredRef.current = false;
+      }
     }, [active]);
 
     useEffect(() => {
@@ -114,6 +125,11 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     }, [disabled, startWatching, stopWatching]);
 
     useEffect(() => {
+      /* Ensure visibility checks only run when the sensor is active and
+      at least one measurement has been completed. This prevents
+      premature visibility calculations with invalid or stale dimensions */
+      if (!active || !hasMeasuredRef.current) return;
+
       const window: ScaledSize = Dimensions.get('window');
       const isVisible: boolean =
         rectDimensions.rectTop + (threshold.top || 0) <= window.height && // Top edge is within the bottom of the window
@@ -129,7 +145,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rectDimensions, lastValue]);
+    }, [rectDimensions, lastValue, active]);
 
     return (
       <View ref={localRef} {...rest}>
