@@ -1,3 +1,10 @@
+## [1.3.16](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.15...v1.3.16) (2025-05-11)
+
+
+### Bug Fixes
+
+* upgraded example app to expo sdk 53 ([6310358](https://github.com/JairajJangle/react-native-visibility-sensor/commit/6310358b9e7efa35cf17ba3ece5509a868250e40))
+
 ## [1.3.15](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.14...v1.3.15) (2025-04-26)
 
 
