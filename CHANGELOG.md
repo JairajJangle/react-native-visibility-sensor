@@ -1,3 +1,10 @@
+## [1.3.18](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.17...v1.3.18) (2025-05-13)
+
+
+### Bug Fixes
+
+* upgrade react-dom from 19.0.0 to 19.1.0 ([55cebfe](https://github.com/JairajJangle/react-native-visibility-sensor/commit/55cebfe142e8fc43fcda1a82ecc3ea43ef8e5963))
+
 ## [1.3.17](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.16...v1.3.17) (2025-05-13)
 
 
