@@ -69,7 +69,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     const [lastValue, setLastValue] = useState<boolean | undefined>(undefined);
     const [active, setActive] = useState<boolean>(false);
 
-    const measureInnerView = () => {
+    const measureInnerView = useCallback(() => {
       /* Check if the sensor is active to prevent unnecessary measurements
       This avoids running measurements when the sensor is disabled or stopped */
       if (
@@ -120,7 +120,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
           measurementStateRef.current = MeasurementState.MEASURED;
         }
       );
-    };
+    }, [active, rectDimensions]);
 
     useInterval(measureInnerView, delay || 100);
 
@@ -136,6 +136,22 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         measurementStateRef.current = MeasurementState.IDLE; // Reset state
       }
     }, [active]);
+
+    // Effect to trigger initial measurement when component becomes active:
+    useEffect(() => {
+      let timer: ReturnType<typeof setTimeout>;
+
+      if (active && measurementStateRef.current === MeasurementState.IDLE) {
+        // Use setTimeout with 0 delay to ensure layout is complete
+        timer = setTimeout(() => {
+          measureInnerView();
+        }, 0);
+      }
+
+      return () => {
+        if (timer) clearTimeout(timer);
+      };
+    }, [active, measureInnerView]);
 
     // Reset measurement state when dimensions change:
     useEffect(() => {
