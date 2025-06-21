@@ -43,6 +43,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     } = props;
 
     const localRef = useRef<View>(null);
+    const isMountedRef = useRef(true);
 
     useImperativeHandle(ref, () => ({
       getInnerRef: () => localRef.current,
@@ -63,7 +64,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     const measureInnerView = () => {
       /* Check if the sensor is active to prevent unnecessary measurements
       This avoids running measurements when the sensor is disabled or stopped */
-      if (!active) return;
+      if (!active || !isMountedRef.current) return;
 
       localRef.current?.measure(
         (
@@ -74,6 +75,11 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
           pageX: number,
           pageY: number
         ) => {
+          // Check if component is still mounted before setting state because measurement can be asynchronous
+          if (!isMountedRef.current) {
+            return;
+          }
+
           const dimensions = {
             rectTop: pageY,
             rectBottom: pageY + height,
@@ -113,6 +119,13 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         hasMeasuredRef.current = false;
       }
     }, [active]);
+
+    useEffect(() => {
+      isMountedRef.current = true;
+      return () => {
+        isMountedRef.current = false;
+      };
+    }, []);
 
     useEffect(() => {
       if (!disabled) {
