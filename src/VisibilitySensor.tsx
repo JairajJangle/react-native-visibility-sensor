@@ -13,6 +13,12 @@ import type {
   RectDimensionsState,
 } from './visibilitySensor.types';
 
+enum MeasurementState {
+  IDLE = 'IDLE', // Not yet measured
+  MEASURING = 'MEASURING', // Measurement in progress
+  MEASURED = 'MEASURED', // Has valid measurements
+}
+
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
 
@@ -44,6 +50,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
 
     const localRef = useRef<View>(null);
     const isMountedRef = useRef(true);
+    const measurementStateRef = useRef<MeasurementState>(MeasurementState.IDLE);
 
     useImperativeHandle(ref, () => ({
       getInnerRef: () => localRef.current,
@@ -59,12 +66,19 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     });
     const [lastValue, setLastValue] = useState<boolean | undefined>(undefined);
     const [active, setActive] = useState<boolean>(false);
-    const hasMeasuredRef = useRef(false);
 
     const measureInnerView = () => {
       /* Check if the sensor is active to prevent unnecessary measurements
       This avoids running measurements when the sensor is disabled or stopped */
-      if (!active || !isMountedRef.current) return;
+      if (
+        !active ||
+        !isMountedRef.current ||
+        measurementStateRef.current === MeasurementState.MEASURING
+      ) {
+        return;
+      }
+
+      measurementStateRef.current = MeasurementState.MEASURING;
 
       localRef.current?.measure(
         (
@@ -97,10 +111,11 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
             rectDimensions.rectHeight !== dimensions.rectHeight
           ) {
             setRectDimensions(dimensions);
-            /* Set hasMeasuredRef to true to indicate that a valid measurement has been taken
-            This ensures visibility checks only proceed after initial measurement */
-            hasMeasuredRef.current = true;
           }
+
+          /* Set measurementStateRef to MEASURED to indicate that a valid measurement has 
+          been taken. This ensures visibility checks only proceed after initial measurement */
+          measurementStateRef.current = MeasurementState.MEASURED;
         }
       );
     };
@@ -116,7 +131,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         setActive(false);
         /* Reset measurement state when stopping to ensure fresh measurements
         when the sensor is reactivated */
-        hasMeasuredRef.current = false;
+        measurementStateRef.current = MeasurementState.IDLE; // Reset state
       }
     }, [active]);
 
@@ -141,7 +156,13 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
       /* Ensure visibility checks only run when the sensor is active and
       at least one measurement has been completed. This prevents
       premature visibility calculations with invalid or stale dimensions */
-      if (!active || !hasMeasuredRef.current) return;
+      if (
+        !active ||
+        measurementStateRef.current !== MeasurementState.MEASURED ||
+        !isMountedRef.current
+      ) {
+        return;
+      }
 
       const window: ScaledSize = Dimensions.get('window');
       const isVisible: boolean =
