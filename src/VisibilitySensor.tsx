@@ -6,7 +6,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import { Dimensions, type ScaledSize, View } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 import type {
   VisibilitySensorRef,
   VisibilitySensorProps,
@@ -48,13 +48,15 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
       ...rest
     } = props;
 
-    const localRef = useRef<View>(null);
-    const isMountedRef = useRef(true);
-    const measurementStateRef = useRef<MeasurementState>(MeasurementState.IDLE);
-
     useImperativeHandle(ref, () => ({
       getInnerRef: () => localRef.current,
     }));
+
+    const window = useWindowDimensions();
+
+    const localRef = useRef<View>(null);
+    const isMountedRef = useRef(true);
+    const measurementStateRef = useRef<MeasurementState>(MeasurementState.IDLE);
 
     const [rectDimensions, setRectDimensions] = useState<RectDimensionsState>({
       rectTop: 0,
@@ -135,6 +137,17 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
       }
     }, [active]);
 
+    // Reset measurement state when dimensions change:
+    useEffect(() => {
+      if (
+        isMountedRef.current &&
+        measurementStateRef.current === MeasurementState.MEASURED
+      ) {
+        // Reset measurement state to force remeasurement with new dimensions
+        measurementStateRef.current = MeasurementState.IDLE;
+      }
+    }, [window]);
+
     useEffect(() => {
       isMountedRef.current = true;
       return () => {
@@ -164,7 +177,6 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         return;
       }
 
-      const window: ScaledSize = Dimensions.get('window');
       const isVisible: boolean =
         rectDimensions.rectTop + (threshold.top || 0) <= window.height && // Top edge is within the bottom of the window
         rectDimensions.rectBottom - (threshold.bottom || 0) >= 0 && // Bottom edge is within the top of the window
@@ -179,7 +191,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rectDimensions, lastValue, active]);
+    }, [rectDimensions, window, lastValue, active]);
 
     return (
       <View ref={localRef} {...rest}>
