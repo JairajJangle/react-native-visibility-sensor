@@ -3322,10 +3322,10 @@ expo-modules-autolinking@2.1.14:
     require-from-string "^2.0.2"
     resolve-from "^5.0.0"
 
-expo-modules-core@2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-2.4.2.tgz#20e9be70a5e2edc77d875b849e0da74c5137e461"
-  integrity sha512-RCb0wniYCJkxwpXrkiBA/WiNGxzYsEpL0sB50gTnS/zEfX3DImS2npc4lfZ3hPZo1UF9YC6OSI9Do+iacV0NUg==
+expo-modules-core@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-2.5.0.tgz#cc098607c9b0665e0cbd0a423c9542253caab58a"
+  integrity sha512-aIbQxZE2vdCKsolQUl6Q9Farlf8tjh/ROR4hfN1qT7QBGPl1XrJGnaOKkcgYaGrlzCPg/7IBe0Np67GzKMZKKQ==
   dependencies:
     invariant "^2.2.4"
 
@@ -3339,10 +3339,10 @@ expo-pwa@0.0.127:
     commander "2.20.0"
     update-check "1.5.3"
 
-expo@^53.0.12:
-  version "53.0.19"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-53.0.19.tgz#69f8ed224efadf517d3ff66dde3d536fb3e8f00a"
-  integrity sha512-hZWEKw6h5dlfKy6+c3f2exx5x3Loio8p0b2s/Pk1eQfTffqpkQRVVlOzcTWU1RSuMfc47ZMpr97pUJWQczOGsQ==
+expo@^53.0.20:
+  version "53.0.20"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-53.0.20.tgz#e11b553322de313d47c407367d8d48d3a073e3cc"
+  integrity sha512-Nh+HIywVy9KxT/LtH08QcXqrxtUOA9BZhsXn3KCsAYA+kNb80M8VKN8/jfQF+I6CgeKyFKJoPNsWgI0y0VBGrA==
   dependencies:
     "@babel/runtime" "^7.20.0"
     "@expo/cli" "0.24.20"
@@ -3358,7 +3358,7 @@ expo@^53.0.12:
     expo-font "~13.3.2"
     expo-keep-awake "~14.1.4"
     expo-modules-autolinking "2.1.14"
-    expo-modules-core "2.4.2"
+    expo-modules-core "2.5.0"
     react-native-edge-to-edge "1.6.0"
     whatwg-url-without-unicode "8.0.0-3"
 
