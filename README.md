@@ -46,8 +46,8 @@ export default function VisibilitySensorExample() {
         {/* Visibility state */}
         <Text>This View is currently visible? {isVisible ? 'yes' : 'no'}</Text>
 
-				{/* Percent visibility state */}
-				<Text>{`Percent visible: ${percentVisible}%`}</Text>
+        {/* Percent visibility state */}
+        <Text>{`Percent visible: ${percentVisible}%`}</Text>
       </VisibilitySensor>
     </ScrollView>
   );
