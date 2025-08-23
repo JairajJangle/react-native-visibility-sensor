@@ -27,12 +27,12 @@ npm install @futurejj/react-native-visibility-sensor
 ## Usage
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 
 export default function VisibilitySensorExample() {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [percentVisible, setPercentVisible] = useState<number>(0);
 
   return (
