@@ -39,7 +39,7 @@ export default function VisibilitySensorExample() {
     <ScrollView>
       <VisibilitySensor
         onChange={setIsVisible}
-				onPercentChange={setPercentVisible} // optional callback for % change
+        onPercentChange={setPercentVisible} // optional callback for % change
         threshold={{ top: 100, bottom: 100 }}
         style={[styles.item, { backgroundColor: isVisible ? 'green' : 'red' }]}>
           
