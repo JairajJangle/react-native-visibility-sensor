@@ -1,3 +1,10 @@
+# [1.4.0-beta.2](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2025-08-23)
+
+
+### Bug Fixes
+
+* added missing state dependencies in visiblity calculations ([af0161c](https://github.com/JairajJangle/react-native-visibility-sensor/commit/af0161c6fcfb4d72f7db97e7fb1c88cc96706c13))
+
 # [1.4.0-beta.1](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.22...v1.4.0-beta.1) (2025-08-23)
 
 
