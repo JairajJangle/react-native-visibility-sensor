@@ -254,8 +254,17 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
           stopWatching();
         }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rectDimensions, window, lastValue, active, onPercentChange]);
+    }, [
+      rectDimensions,
+      window,
+      lastValue,
+      active,
+      onPercentChange,
+      threshold,
+      onChange,
+      triggerOnce,
+      stopWatching,
+    ]);
 
     return (
       <View ref={localRef} {...rest}>
