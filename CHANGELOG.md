@@ -1,3 +1,23 @@
+# [1.4.0-beta.1](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.22...v1.4.0-beta.1) (2025-08-23)
+
+
+### Bug Fixes
+
+* add window dimension change listener to handle orientation changes ([5f640db](https://github.com/JairajJangle/react-native-visibility-sensor/commit/5f640db1be9f447f9b82aece4b1e9a366df36573))
+* handle initial visibility state and improve measurement timing ([f5e4de7](https://github.com/JairajJangle/react-native-visibility-sensor/commit/f5e4de7dd7802951a5654fe9ab8cf574f9f4d52d))
+* prevent race conditions during rapid mount/unmount cycles ([de6cb59](https://github.com/JairajJangle/react-native-visibility-sensor/commit/de6cb59111b4b8944d3070bb826290b8941340c5))
+* prevent state updates on unmounted components ([6c9786a](https://github.com/JairajJangle/react-native-visibility-sensor/commit/6c9786a1ccc46e5c48813e349a7e6aabb9b4052a))
+
+
+### Features
+
+* added percent visiblity callback requested in [#44](https://github.com/JairajJangle/react-native-visibility-sensor/issues/44) ([e78fa27](https://github.com/JairajJangle/react-native-visibility-sensor/commit/e78fa27a9fe2d8c37227f3ab6022964aeafe8b37))
+
+
+### Performance Improvements
+
+* conserved percent calc. if view is not visible - [#44](https://github.com/JairajJangle/react-native-visibility-sensor/issues/44) ([81d0036](https://github.com/JairajJangle/react-native-visibility-sensor/commit/81d003651348dcfb871d832137330d174f1f56e2))
+
 ## [1.3.22](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.3.21...v1.3.22) (2025-08-12)
 
 
