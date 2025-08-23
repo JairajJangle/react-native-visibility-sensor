@@ -26,32 +26,28 @@ npm install @futurejj/react-native-visibility-sensor
 
 ## Usage
 
-```typescript
+```tsx
 import React from 'react';
 import { ScrollView, Text } from 'react-native';
 import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 
 export default function VisibilitySensorExample() {
-  const [isInView, setIsInView] = React.useState(false);
-
-  function checkVisible(isVisible: boolean) {
-    if (isVisible) {
-      setIsInView(isVisible);
-    } else {
-      setIsInView(isVisible);
-    }
-  }
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [percentVisible, setPercentVisible] = useState<number>(0);
 
   return (
     <ScrollView>
       <VisibilitySensor
-        onChange={(isVisible) => checkVisible(isVisible)}
-        threshold={{
-          left: 100,
-          right: 100,
-        }}
-        style={[styles.item, { backgroundColor: isInView ? 'green' : 'red' }]}>
-        <Text>This View is currently visible? {isInView ? 'yes' : 'no'}</Text>
+        onChange={setIsVisible}
+				onPercentChange={setPercentVisible} // optional callback for % change
+        threshold={{ top: 100, bottom: 100 }}
+        style={[styles.item, { backgroundColor: isVisible ? 'green' : 'red' }]}>
+          
+        {/* Visibility state */}
+        <Text>This View is currently visible? {isVisible ? 'yes' : 'no'}</Text>
+
+				{/* Percent visibility state */}
+				<Text>{`Percent visible: ${percentVisible}%`}</Text>
       </VisibilitySensor>
     </ScrollView>
   );
@@ -61,13 +57,14 @@ export default function VisibilitySensorExample() {
 
 `VisibilitySensorProps` extends `ViewProps` from React Native, which includes common properties for all views, such as `style`, `onLayout`, etc. 
 
-| Property    | Type                                                    | Required | Description                                                  |
-| ----------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
-| onChange    | (visible: boolean) => void                              | Yes      | Callback function that fires when visibility changes.        |
-| disabled    | boolean                                                 | No       | If `true`, disables the sensor.                              |
-| triggerOnce | boolean                                                 | No       | If `true`, the sensor will only trigger once.                |
-| delay       | number \| undefined                                     | No       | The delay in milliseconds before the sensor triggers.        |
-| threshold   | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
+| Property        | Type                                                    | Required | Description                                                  |
+| --------------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| onChange        | (visible: boolean) => void                              | Yes      | Callback function that fires when visibility changes.        |
+| onPercentChange | (percentVisible: number) => void                        | No       | Callback function that fires when visibility % changes.      |
+| disabled        | boolean                                                 | No       | If `true`, disables the sensor.                              |
+| triggerOnce     | boolean                                                 | No       | If `true`, the sensor will only trigger once.                |
+| delay           | number \| undefined                                     | No       | The delay in milliseconds before the sensor triggers.        |
+| threshold       | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
 
 Additionally, all properties from `ViewProps` are also applicable. 
 
