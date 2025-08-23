@@ -205,7 +205,8 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
       if (
         onPercentChange &&
         rectDimensions.rectWidth > 0 &&
-        rectDimensions.rectHeight > 0
+        rectDimensions.rectHeight > 0 &&
+        isVisible // Don't perform % calculation if not visible for efficiency
       ) {
         // Thresholds reduce the effective viewport
         const viewportTop = 0 + (threshold.top || 0);
@@ -237,6 +238,13 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
           lastPercentRef.current = percentVisible;
           onPercentChange(percentVisible);
         }
+      } else if (
+        onPercentChange &&
+        rectDimensions.rectWidth > 0 &&
+        rectDimensions.rectHeight > 0 &&
+        !isVisible // If not visible, always report 0%
+      ) {
+        onPercentChange(0);
       }
 
       if (lastValue !== isVisible) {
