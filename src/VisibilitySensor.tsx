@@ -40,6 +40,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
   (props, ref) => {
     const {
       onChange,
+      onPercentVisibleChange,
       disabled = false,
       triggerOnce = false,
       delay,
@@ -57,6 +58,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
     const localRef = useRef<View>(null);
     const isMountedRef = useRef(true);
     const measurementStateRef = useRef<MeasurementState>(MeasurementState.IDLE);
+    const lastPercentRef = useRef<number | undefined>(undefined);
 
     const [rectDimensions, setRectDimensions] = useState<RectDimensionsState>({
       rectTop: 0,
@@ -199,6 +201,44 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         rectDimensions.rectLeft + (threshold.left || 0) <= window.width && // Left edge is within the right of the window
         rectDimensions.rectRight - (threshold.right || 0) >= 0; // Right edge is within the left of the window
 
+      // Calculate percent visible if callback is requested / provided
+      if (
+        onPercentVisibleChange &&
+        rectDimensions.rectWidth > 0 &&
+        rectDimensions.rectHeight > 0
+      ) {
+        // Thresholds reduce the effective viewport
+        const viewportTop = 0 + (threshold.top || 0);
+        const viewportBottom = window.height - (threshold.bottom || 0);
+        const viewportLeft = 0 + (threshold.left || 0);
+        const viewportRight = window.width - (threshold.right || 0);
+
+        // Calculate the visible portion of the element within the reduced viewport
+        const visibleTop = Math.max(viewportTop, rectDimensions.rectTop);
+        const visibleBottom = Math.min(
+          viewportBottom,
+          rectDimensions.rectBottom
+        );
+        const visibleLeft = Math.max(viewportLeft, rectDimensions.rectLeft);
+        const visibleRight = Math.min(viewportRight, rectDimensions.rectRight);
+
+        // Calculate visible dimensions
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+
+        // Calculate percent visible based on actual element area
+        const visibleArea = visibleHeight * visibleWidth;
+        const totalArea = rectDimensions.rectHeight * rectDimensions.rectWidth;
+        const percentVisible =
+          totalArea > 0 ? Math.round((visibleArea / totalArea) * 100) : 0;
+
+        // Only fire callback if percent has changed
+        if (lastPercentRef.current !== percentVisible) {
+          lastPercentRef.current = percentVisible;
+          onPercentVisibleChange(percentVisible);
+        }
+      }
+
       if (lastValue !== isVisible) {
         setLastValue(isVisible);
         onChange(isVisible);
@@ -207,7 +247,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rectDimensions, window, lastValue, active]);
+    }, [rectDimensions, window, lastValue, active, onPercentVisibleChange]);
 
     return (
       <View ref={localRef} {...rest}>
