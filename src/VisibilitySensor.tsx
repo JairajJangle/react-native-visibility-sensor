@@ -40,7 +40,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
   (props, ref) => {
     const {
       onChange,
-      onPercentVisibleChange,
+      onPercentChange,
       disabled = false,
       triggerOnce = false,
       delay,
@@ -203,7 +203,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
 
       // Calculate percent visible if callback is requested / provided
       if (
-        onPercentVisibleChange &&
+        onPercentChange &&
         rectDimensions.rectWidth > 0 &&
         rectDimensions.rectHeight > 0
       ) {
@@ -235,7 +235,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         // Only fire callback if percent has changed
         if (lastPercentRef.current !== percentVisible) {
           lastPercentRef.current = percentVisible;
-          onPercentVisibleChange(percentVisible);
+          onPercentChange(percentVisible);
         }
       }
 
@@ -247,7 +247,7 @@ const VisibilitySensor = forwardRef<VisibilitySensorRef, VisibilitySensorProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rectDimensions, window, lastValue, active, onPercentVisibleChange]);
+    }, [rectDimensions, window, lastValue, active, onPercentChange]);
 
     return (
       <View ref={localRef} {...rest}>
