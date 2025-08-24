@@ -57,14 +57,14 @@ export default function VisibilitySensorExample() {
 
 `VisibilitySensorProps` extends `ViewProps` from React Native, which includes common properties for all views, such as `style`, `onLayout`, etc. 
 
-| Property        | Type                                                    | Required | Description                                                  |
-| --------------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
-| onChange        | (visible: boolean) => void                              | Yes      | Callback function that fires when visibility changes.        |
-| onPercentChange | (percentVisible: number) => void                        | No       | Callback function that fires when visibility % changes.      |
-| disabled        | boolean                                                 | No       | If `true`, disables the sensor.                              |
-| triggerOnce     | boolean                                                 | No       | If `true`, the sensor will only trigger once.                |
-| delay           | number \| undefined                                     | No       | The delay in milliseconds before the sensor triggers.        |
-| threshold       | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
+| Property          | Type                                                    | Required | Description                                                  |
+| ----------------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| `onChange`        | `(visible: boolean) => void`                            | Yes      | Callback function that fires when visibility changes.        |
+| `onPercentChange` | `(percentVisible: number) => void`                      | No       | Callback function that fires when visibility % changes.      |
+| `disabled`        | `boolean`                                               | No       | If `true`, disables the sensor.                              |
+| `triggerOnce`     | `boolean`                                               | No       | If `true`, the sensor will only trigger once.                |
+| `delay`           | `number` or `undefined`                                 | No       | The delay in milliseconds before the sensor triggers.        |
+| `threshold`       | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
 
 Additionally, all properties from `ViewProps` are also applicable. 
 
@@ -72,12 +72,12 @@ Additionally, all properties from `ViewProps` are also applicable.
 
 ### VisibilitySensorThreshold
 
-| Property | Type   | Required | Description                                |
-| -------- | ------ | -------- | ------------------------------------------ |
-| top      | number | No       | The top threshold value for visibility.    |
-| bottom   | number | No       | The bottom threshold value for visibility. |
-| left     | number | No       | The left threshold value for visibility.   |
-| right    | number | No       | The right threshold value for visibility.  |
+| Property | Type     | Required | Description                                |
+| -------- | -------- | -------- | ------------------------------------------ |
+| `top`    | `number` | No       | The top threshold value for visibility.    |
+| `bottom` | `number` | No       | The bottom threshold value for visibility. |
+| `left`   | `number` | No       | The left threshold value for visibility.   |
+| `right`  | `number` | No       | The right threshold value for visibility.  |
 
 ---
 
