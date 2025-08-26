@@ -2,6 +2,7 @@ import type { View, ViewProps } from 'react-native';
 
 export interface VisibilitySensorProps extends ViewProps {
   onChange: (visible: boolean) => void;
+  onPercentChange?: (percentVisible: number) => void;
   disabled?: boolean;
   triggerOnce?: boolean;
   delay?: number | undefined;

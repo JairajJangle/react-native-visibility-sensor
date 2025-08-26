@@ -5,8 +5,9 @@
 [![npm version](https://img.shields.io/npm/v/%40futurejj%2Freact-native-visibility-sensor)](https://badge.fury.io/js/%40futurejj%2Freact-native-visibility-sensor) [![License](https://img.shields.io/github/license/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/blob/main/LICENSE) [![Workflow Status](https://github.com/JairajJangle/react-native-visibility-sensor/actions/workflows/ci.yml/badge.svg)](https://github.com/JairajJangle/react-native-visibility-sensor/actions/workflows/ci.yml)  ![Android](https://img.shields.io/badge/-Android-555555?logo=android&logoColor=3DDC84) ![iOS](https://img.shields.io/badge/-iOS-555555?logo=apple&logoColor=white) ![Web](https://img.shields.io/badge/-Web-555555?logo=google-chrome&logoColor=0096FF) [![GitHub issues](https://img.shields.io/github/issues/JairajJangle/react-native-visibility-sensor)](https://github.com/JairajJangle/react-native-visibility-sensor/issues?q=is%3Aopen+is%3Aissue) ![TS](https://img.shields.io/badge/TypeScript-strict_💪-blue) [![Expo Snack](https://img.shields.io/badge/Expo%20Snack-555555?style=flat&logo=expo&logoColor=white)](https://snack.expo.dev/@futurejj/react-native-visibility-sensor-example) ![NPM Downloads](https://img.shields.io/npm/dm/%40futurejj%2Freact-native-visibility-sensor) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/%40futurejj%2Freact-native-visibility-sensor)
 
 <div align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTlsaGEyaXd4ZDdicWdtYnM4d3FibWltZjJwd3RrOG80b2pzemQ4dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hNCfKTz7YMuDPIM7eV/giphy.gif" alt="Visibility Sensor demo" style="border: 1px solid gray;" />
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXN4ZWs5ejdiYmZ5Zm5xaWw5YXZ5OGYwMmczcnFneXNiYW5hcDh6cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gEbrrDtgnoq6Fs8FNq/giphy.gif" alt="Visibility Sensor demo" style="border: 1px solid gray;" />
 </div>
+
 
 
 ## Installation
@@ -26,32 +27,28 @@ npm install @futurejj/react-native-visibility-sensor
 
 ## Usage
 
-```typescript
-import React from 'react';
+```tsx
+import React, { useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 
 export default function VisibilitySensorExample() {
-  const [isInView, setIsInView] = React.useState(false);
-
-  function checkVisible(isVisible: boolean) {
-    if (isVisible) {
-      setIsInView(isVisible);
-    } else {
-      setIsInView(isVisible);
-    }
-  }
+  const [isVisible, setIsVisible] = useState(false);
+  const [percentVisible, setPercentVisible] = useState<number>(0);
 
   return (
     <ScrollView>
       <VisibilitySensor
-        onChange={(isVisible) => checkVisible(isVisible)}
-        threshold={{
-          left: 100,
-          right: 100,
-        }}
-        style={[styles.item, { backgroundColor: isInView ? 'green' : 'red' }]}>
-        <Text>This View is currently visible? {isInView ? 'yes' : 'no'}</Text>
+        onChange={setIsVisible}
+        onPercentChange={setPercentVisible} // optional callback for % change
+        threshold={{ top: 100, bottom: 100 }}
+        style={[styles.item, { backgroundColor: isVisible ? 'green' : 'red' }]}>
+          
+        {/* Visibility state */}
+        <Text>This View is currently visible? {isVisible ? 'yes' : 'no'}</Text>
+
+        {/* Percent visibility state */}
+        <Text>{`Percent visible: ${percentVisible}%`}</Text>
       </VisibilitySensor>
     </ScrollView>
   );
@@ -61,13 +58,14 @@ export default function VisibilitySensorExample() {
 
 `VisibilitySensorProps` extends `ViewProps` from React Native, which includes common properties for all views, such as `style`, `onLayout`, etc. 
 
-| Property    | Type                                                    | Required | Description                                                  |
-| ----------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
-| onChange    | (visible: boolean) => void                              | Yes      | Callback function that fires when visibility changes.        |
-| disabled    | boolean                                                 | No       | If `true`, disables the sensor.                              |
-| triggerOnce | boolean                                                 | No       | If `true`, the sensor will only trigger once.                |
-| delay       | number \| undefined                                     | No       | The delay in milliseconds before the sensor triggers.        |
-| threshold   | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
+| Property          | Type                                                    | Required | Description                                                  |
+| ----------------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| `onChange`        | `(visible: boolean) => void`                            | Yes      | Callback function that fires when visibility changes.        |
+| `onPercentChange` | `(percentVisible: number) => void`                      | No       | Callback function that fires when visibility % changes.      |
+| `disabled`        | `boolean`                                               | No       | If `true`, disables the sensor.                              |
+| `triggerOnce`     | `boolean`                                               | No       | If `true`, the sensor will only trigger once.                |
+| `delay`           | `number` or `undefined`                                 | No       | The delay in milliseconds before the sensor triggers.        |
+| `threshold`       | [VisibilitySensorThreshold](#visibilitysensorthreshold) | No       | Defines the part of the view that must be visible for the sensor to trigger. |
 
 Additionally, all properties from `ViewProps` are also applicable. 
 
@@ -75,12 +73,12 @@ Additionally, all properties from `ViewProps` are also applicable.
 
 ### VisibilitySensorThreshold
 
-| Property | Type   | Required | Description                                |
-| -------- | ------ | -------- | ------------------------------------------ |
-| top      | number | No       | The top threshold value for visibility.    |
-| bottom   | number | No       | The bottom threshold value for visibility. |
-| left     | number | No       | The left threshold value for visibility.   |
-| right    | number | No       | The right threshold value for visibility.  |
+| Property | Type     | Required | Description                                |
+| -------- | -------- | -------- | ------------------------------------------ |
+| `top`    | `number` | No       | The top threshold value for visibility.    |
+| `bottom` | `number` | No       | The bottom threshold value for visibility. |
+| `left`   | `number` | No       | The left threshold value for visibility.   |
+| `right`  | `number` | No       | The right threshold value for visibility.  |
 
 ---
 

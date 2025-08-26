@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FlatList,
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -10,17 +9,19 @@ import {
 } from 'react-native';
 import { VisibilitySensor } from '@futurejj/react-native-visibility-sensor';
 import { pocketMonsters, type PocketMonsterInfo } from './pocketMonsters';
-import { useCallback, useState } from 'react';
+
+const topThreshold = 200;
+const bottomThreshold = 200;
 
 export default function App() {
   const renderItems: ListRenderItem<PocketMonsterInfo> = ({ item }) => (
     <View style={styles.spacer}>
-      <InViewPocketMonster {...item} />
+      <PocketMonsterView {...item} />
     </View>
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <FlatList
         data={pocketMonsters}
         keyExtractor={(_item, index) => index.toString()}
@@ -29,71 +30,121 @@ export default function App() {
         ListHeaderComponent={<View style={styles.listHeaderFooter} />}
         ListFooterComponent={<View style={styles.listHeaderFooter} />}
       />
-    </SafeAreaView>
+
+      {/* Threshold indicators - just to visualize the threshold boundaries */}
+      {/* Top */}
+      <View
+        style={[styles.thresholdIndicatorBase, styles.topThresholdIndicator]}
+      />
+      {/* Bottom */}
+      <View
+        style={[styles.thresholdIndicatorBase, styles.bottomThresholdIndicator]}
+      />
+    </>
   );
 }
 
-const InViewPocketMonster = ({
+const PocketMonsterView = ({
   name,
   spriteUri,
 }: {
   name: string;
   spriteUri: string;
 }) => {
-  const [isInView, setIsInView] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [percentVisible, setPercentVisible] = useState<number>(0);
 
-  const checkVisible = useCallback(
-    (isVisible: boolean) => {
-      setIsInView(isVisible);
+  useEffect(() => {
+    console.log(
+      // eslint-disable-next-line prettier/prettier
+      `${name} ${isVisible ? 'is now' : "isn't"} visible ${isVisible && !isVisible ? 'anymore' : ''
+      }`
+    );
+  }, [name, isVisible]);
 
-      console.log(
-        // eslint-disable-next-line prettier/prettier
-        `${name} ${isVisible ? 'is now' : "isn't"} visible ${isInView && !isVisible ? 'anymore' : ''
-        }`
-      );
-    },
-    [name, isInView]
-  );
   return (
     <VisibilitySensor
-      threshold={{
-        top: 200,
-        bottom: 200,
-      }}
-      onChange={checkVisible}
+      threshold={{ top: topThreshold, bottom: bottomThreshold }}
+      onPercentChange={setPercentVisible}
+      onChange={setIsVisible}
       style={[
         styles.visibilitySensor,
-        isInView ? styles.inView : styles.notInView,
+        isVisible ? styles.visible : styles.notVisible,
       ]}
     >
+      {/* Header percent visible text - to see % when the bottom is out of viewport */}
+      <Text
+        style={[
+          styles.pocketMonstersPercentVisibilityTextBase,
+          styles.pocketMonsterPercentVisibilityHeader,
+        ]}
+      >
+        Percent Visible: {percentVisible}
+      </Text>
+
+      {/* Image */}
       <Image
         source={{ uri: spriteUri }}
         style={[
           styles.pocketMonster,
-          isInView ? styles.pocketMonsterInView : styles.pocketMonsterNotInView,
+          isVisible
+            ? styles.pocketMonsterVisible
+            : styles.pocketMonsterNotVisible,
         ]}
         resizeMode={'contain'}
       />
+      {/* Name */}
       <Text style={styles.pocketMonsterName}>{name}</Text>
+
+      {/* Footer percent visible text - to see % when the top is out of viewport */}
+      <Text
+        style={[
+          styles.pocketMonstersPercentVisibilityTextBase,
+          styles.pocketMonsterPercentVisibilityFooter,
+        ]}
+      >
+        Percent Visible: {percentVisible}
+      </Text>
     </VisibilitySensor>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+  },
   flatListContentContainer: {
     alignItems: 'center',
   },
-  spacer: { marginHorizontal: 35 },
+  spacer: {
+    marginHorizontal: 35,
+  },
+
+  thresholdIndicatorBase: {
+    position: 'absolute',
+    width: '100%',
+    alignItems: 'center',
+    zIndex: 9999,
+    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+  },
+  topThresholdIndicator: {
+    top: 0,
+    height: topThreshold,
+  },
+  bottomThresholdIndicator: {
+    bottom: 0,
+    height: bottomThreshold,
+  },
+
   pocketMonster: {
     width: 200,
     height: 200,
     resizeMode: 'contain',
   },
-  pocketMonsterInView: {
+  pocketMonsterVisible: {
     opacity: 1,
   },
-  pocketMonsterNotInView: {
+  pocketMonsterNotVisible: {
     opacity: 0.4,
   },
   pocketMonsterName: {
@@ -102,22 +153,34 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 26,
   },
+
+  pocketMonstersPercentVisibilityTextBase: {
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  pocketMonsterPercentVisibilityHeader: {
+    marginBottom: 10,
+  },
+  pocketMonsterPercentVisibilityFooter: {
+    marginTop: 10,
+  },
+
   listHeaderFooter: {
-    padding: 20,
+    padding: 40,
   },
   visibilitySensor: {
     marginBottom: 20,
-    width: 300,
-    height: 300,
+    width: 320,
+    height: 320,
     borderRadius: 20,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inView: {
+  visible: {
     backgroundColor: 'yellow',
   },
-  notInView: {
+  notVisible: {
     backgroundColor: 'pink',
     opacity: 0.8,
   },
