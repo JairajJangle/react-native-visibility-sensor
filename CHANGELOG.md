@@ -1,3 +1,10 @@
+# [1.4.0-beta.3](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.0-beta.2...v1.4.0-beta.3) (2025-08-26)
+
+
+### Bug Fixes
+
+* **perf:** reduced unnecessary onPercentChange callback calls when last percent is already 0 ([39e8aa8](https://github.com/JairajJangle/react-native-visibility-sensor/commit/39e8aa847b42eabe9341e4bec96c35f1b8c67972))
+
 # [1.4.0-beta.2](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2025-08-23)
 
 
