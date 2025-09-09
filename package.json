@@ -7,7 +7,6 @@
   "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
-  "private": false,
   "files": [
     "src",
     "lib",
@@ -33,7 +32,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
+    "example": "yarn workspace @futurejj/react-native-visibility-sensor-example",
     "bootstrap": "yarn example && yarn install"
   },
   "keywords": [
@@ -94,10 +93,13 @@
     "react": "*",
     "react-native": "*"
   },
+  "workspaces": [
+    "example"
+  ],
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "yarn@4.9.4",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
