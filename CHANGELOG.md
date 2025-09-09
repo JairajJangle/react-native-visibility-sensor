@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.1...v1.4.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* **build:** force patch release to reflect migration to yarn berry + workspaces ([f22e6a1](https://github.com/JairajJangle/react-native-visibility-sensor/commit/f22e6a192a91c24e2adb34fed992617672b4724e))
+
 ## [1.4.1](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.0...v1.4.1) (2025-08-27)
 
 
