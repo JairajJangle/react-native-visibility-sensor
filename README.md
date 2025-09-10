@@ -10,7 +10,7 @@
 
 ## Use Cases
 
-- **Lazy Loading**: Load images/content only when visible to optimize performance in feeds/galleries/charts/webviews.
+- **Lazy Loading**: Load images/content only when visible to optimize performance in feeds, galleries, charts or webviews.
 - **Scroll Animations**: Trigger animations (e.g., fade-ins, slides) for components entering the viewport.
 - **Analytics Tracking**: Log impressions for ads/banners when visible for a set duration or percentage.
 - **Dynamic UI & Optimization**: Pause/resume videos, cleanup out of screen components or timers based on component visibility in feeds or carousels.
