@@ -8,7 +8,12 @@
   <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXN4ZWs5ejdiYmZ5Zm5xaWw5YXZ5OGYwMmczcnFneXNiYW5hcDh6cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gEbrrDtgnoq6Fs8FNq/giphy.gif" alt="Visibility Sensor demo" style="border: 1px solid gray;" />
 </div>
 
+## Use Cases
 
+- **Lazy Loading**: Load images/content only when visible to optimize performance in feeds/galleries/charts/webviews.
+- **Scroll Animations**: Trigger animations (e.g., fade-ins, slides) for components entering the viewport.
+- **Analytics Tracking**: Log impressions for ads/banners when visible for a set duration or percentage.
+- **Dynamic UI & Optimization**: Pause/resume videos, cleanup out of screen components or timers based on component visibility in feeds or carousels.
 
 ## Installation
 
