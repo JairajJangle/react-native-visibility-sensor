@@ -61,7 +61,7 @@ jobs:
 
       - name: Build example for Web
         run: |
-          yarn example expo export:web
+          yarn example expo export --platform web
 
   publish-beta:
     needs: [lint, test, build-library, build-web]
