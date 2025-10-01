@@ -1,7 +1,6 @@
 const path = require('path');
 const escape = require('escape-string-regexp');
 const { getDefaultConfig } = require('@expo/metro-config');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
 const pak = require('../package.json');
 
 const root = path.resolve(__dirname, '..');
@@ -26,12 +25,22 @@ const config = {
   resolver: {
     ...defaultConfig.resolver,
 
-    blacklistRE: exclusionList(
-      modules.map(
+    blockList: (() => {
+      const customBlockList = modules.map(
         (m) =>
           new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`)
-      )
-    ),
+      );
+
+      const defaultBlockListSource = defaultConfig.resolver.blockList.source;
+      const customSources = customBlockList.map((re) => re.source).join('|');
+      const fullSource = customSources
+        ? `${defaultBlockListSource}|${customSources}`
+        : defaultBlockListSource;
+
+      // Preserve the original flags (usually empty or 'i')
+      const flags = defaultConfig.resolver.blockList.flags || '';
+      return new RegExp(fullSource, flags);
+    })(),
 
     extraNodeModules: modules.reduce((acc, name) => {
       acc[name] = path.join(__dirname, 'node_modules', name);
