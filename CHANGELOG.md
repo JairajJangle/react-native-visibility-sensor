@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.5...v1.4.6) (2025-12-13)
+
+
+### Bug Fixes
+
+* **chore:** housekeeping ([a410536](https://github.com/JairajJangle/react-native-visibility-sensor/commit/a41053699634b01d6c7910be8ecbf4cfca876cb9))
+
 ## [1.4.5](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.4...v1.4.5) (2025-12-03)
 
 ## [1.4.4](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.3...v1.4.4) (2025-10-01)
