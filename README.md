@@ -6,8 +6,8 @@
 
 <div align="center">
   <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXN4ZWs5ejdiYmZ5Zm5xaWw5YXZ5OGYwMmczcnFneXNiYW5hcDh6cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gEbrrDtgnoq6Fs8FNq/giphy.gif" alt="Visibility Sensor demo" style="border: 1px solid gray;" />
- <img
-src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWJocG1idG5jODRmM20xdzd0a3Zlb25rdjIxZWRrdzhreHJpOWd2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITFXieDSZ0lWaFcrwC/giphy.gif" alt="Visibility Sensor nested scroll view demo" style="border: 1px solid gray; margin-left: 40px;" />
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWJocG1idG5jODRmM20xdzd0a3Zlb25rdjIxZWRrdzhreHJpOWd2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITFXieDSZ0lWaFcrwC/giphy.gif" alt="Visibility Sensor nested scroll view demo" style="border: 1px solid gray; margin-left: 40px;" />
+</div>
 
 
 ## Use Cases
