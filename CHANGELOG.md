@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.9...v1.4.10) (2026-02-07)
+
+
+### Bug Fixes
+
+* maintenance - dev dep upgraded ([ac77106](https://github.com/JairajJangle/react-native-visibility-sensor/commit/ac77106d3f78ca6a92a4d141db711c362bc81af8))
+
 ## [1.4.9](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.8...v1.4.9) (2026-01-30)
 
 
