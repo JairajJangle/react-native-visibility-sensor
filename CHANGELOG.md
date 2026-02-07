@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.8...v1.4.9) (2026-01-30)
+
+
+### Bug Fixes
+
+* **docs:** fixed broken readme formatting ([5c833b6](https://github.com/JairajJangle/react-native-visibility-sensor/commit/5c833b66758b18cd63c3c459e45adfaa16b962f2))
+
 ## [1.4.8](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.7...v1.4.8) (2026-01-30)
 
 ## [1.4.7](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.6...v1.4.7) (2026-01-18)
