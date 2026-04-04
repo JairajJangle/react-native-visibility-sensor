@@ -1,3 +1,5 @@
+## [1.4.11](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.10...v1.4.11) (2026-03-08)
+
 ## [1.4.10](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.9...v1.4.10) (2026-02-07)
 
 
