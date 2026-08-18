@@ -1,3 +1,10 @@
+## [1.4.17](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.16...v1.4.17) (2026-08-18)
+
+
+### Bug Fixes
+
+* **deps:** resolve dependabot security alerts ([03fa6a4](https://github.com/JairajJangle/react-native-visibility-sensor/commit/03fa6a4a8c845a1c7eef26bd40349b8e9a6266a6))
+
 ## [1.4.16](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.15...v1.4.16) (2026-06-15)
 
 ## [1.4.15](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.14...v1.4.15) (2026-06-05)
