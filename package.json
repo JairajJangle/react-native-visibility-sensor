@@ -86,7 +86,10 @@
     "typescript": "5.9.3"
   },
   "resolutions": {
-    "@types/react": "~18.3.5"
+    "@types/react": "~18.3.5",
+    "@expo/metro-config/postcss": "^8.5.23",
+    "release-it/undici": "^6.28.0",
+    "xcode/uuid": "^11.1.1"
   },
   "peerDependencies": {
     "react": "*",
