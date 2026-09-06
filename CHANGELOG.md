@@ -1,3 +1,10 @@
+## [1.4.18](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.17...v1.4.18) (2026-09-06)
+
+
+### Bug Fixes
+
+* **deps:** patch xmldom and fast-uri advisories via lockfile refresh ([ed59d4b](https://github.com/JairajJangle/react-native-visibility-sensor/commit/ed59d4be63c0c3b3e6bb4a5af6a4e6dc99917594))
+
 ## [1.4.17](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.16...v1.4.17) (2026-08-18)
 
 
