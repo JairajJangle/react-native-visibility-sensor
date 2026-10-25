@@ -1,5 +1,9 @@
 ## [1.4.19](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.18...v1.4.19) (2026-10-25)
 
+### Miscellaneous Chores
+
+* **deps:** patch dependabot security alerts via lockfile refresh ([836673d](https://github.com/JairajJangle/react-native-visibility-sensor/commit/836673d1fd438ce8813abed9f088dac05418532e))
+
 ## [1.4.18](https://github.com/JairajJangle/react-native-visibility-sensor/compare/v1.4.17...v1.4.18) (2026-09-06)
 
 
